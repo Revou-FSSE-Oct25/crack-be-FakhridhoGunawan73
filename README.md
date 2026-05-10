@@ -1,98 +1,355 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Booking Kost Management System Backend API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A RESTful backend API for a boarding house (kost) booking and management platform built with NestJS, Prisma, PostgreSQL, and JWT authentication.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+# Deployment Links
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Live Backend API
 
-## Project setup
+The backend API has been deployed using Railway.
 
-```bash
-$ npm install
+Live API: https://your-railway-domain.up.railway.app
+
+---
+
+# Project Documentation
+
+Documentation: Coming soon
+
+---
+
+# Frontend Deployment
+
+Frontend URL: Coming soon
+
+---
+
+# Presentation
+
+Presentation Slides: Coming soon
+
+---
+
+# Features
+
+- JWT Authentication
+- Role-Based Authorization
+- Protected Routes
+- Kos Management System
+- Room Management System
+- Booking Management System
+- Booking Approval & Rejection
+- Booking History Tracking
+- Duplicate Booking Prevention
+- DTO Validation
+- Relational Database Management
+
+---
+
+# Tech Stack
+
+- NestJS
+- TypeScript
+- Prisma ORM
+- PostgreSQL / Neon
+- JWT Authentication
+- Railway Deployment
+- class-validator
+
+---
+
+# Project Structure
+
+```txt
+src/
+├── auth/
+├── bookings/
+├── kos/
+├── rooms/
+├── prisma/
+└── common/
 ```
 
-## Compile and run the project
+---
+
+# ERD (Entity Relationship Diagram)
+
+![alt text](assets/images/ERD.png)
+
+## Relationships
+
+- One User can have many Kos
+- One Kos can have many Rooms
+- One User can have many Bookings
+- One Room can have many Bookings
+
+---
+
+# Installation
+
+## Install Dependencies
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+---
+
+# Environment Variables
+
+Create `.env` file:
+
+```env
+DATABASE_URL=
+JWT_SECRET=
+```
+
+---
+
+# Run Application
+
+## Development
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start:dev
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Production
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run build
+npm run start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+# Prisma Commands
 
-Check out a few resources that may come in handy when working with NestJS:
+## Generate Prisma Client
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npx prisma generate
+```
 
-## Support
+## Run Migration
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npx prisma migrate dev
+```
 
-## Stay in touch
+## Open Prisma Studio
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+npx prisma studio
+```
 
-## License
+---
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# Authentication
+
+This API uses JWT authentication.
+
+Example protected route header:
+
+```txt
+Authorization: Bearer <access_token>
+```
+
+---
+
+# Main Modules
+
+| Module   | Description                    |
+| -------- | ------------------------------ |
+| Auth     | Authentication & authorization |
+| Kos      | Boarding house management      |
+| Rooms    | Room management system         |
+| Bookings | Booking & approval management  |
+| Prisma   | Database connection management |
+
+---
+
+# Roles
+
+## USER
+
+- View available kos
+- View rooms
+- Create booking
+- View booking history
+
+## OWNER
+
+- Create kos
+- Update kos
+- Delete kos
+- Create room
+- Update room
+- Delete room
+- View incoming bookings
+- Approve or reject bookings
+
+## ADMIN
+
+- Access all data
+- Access all bookings
+- Manage all resources
+
+---
+
+# API Endpoints
+
+## Authentication
+
+### Register
+
+```http
+POST /auth/register
+```
+
+### Login
+
+```http
+POST /auth/login
+```
+
+### Profile
+
+```http
+GET /auth/profile
+```
+
+---
+
+## Kos
+
+### Get All Kos
+
+```http
+GET /kos
+```
+
+### Create Kos
+
+```http
+POST /kos
+```
+
+### Update Kos
+
+```http
+PATCH /kos/:id
+```
+
+### Delete Kos
+
+```http
+DELETE /kos/:id
+```
+
+---
+
+## Rooms
+
+### Get All Rooms
+
+```http
+GET /rooms
+```
+
+### Create Room
+
+```http
+POST /rooms
+```
+
+### Update Room
+
+```http
+PATCH /rooms/:id
+```
+
+### Delete Room
+
+```http
+DELETE /rooms/:id
+```
+
+---
+
+## Bookings
+
+### Create Booking
+
+```http
+POST /bookings
+```
+
+### Get All Bookings (OWNER / ADMIN)
+
+```http
+GET /bookings
+```
+
+### Get User Booking History
+
+```http
+GET /bookings/my-bookings
+```
+
+### Update Booking Status
+
+```http
+PATCH /bookings/:id/status
+```
+
+---
+
+# Business Rules
+
+- OWNER can only manage their own kos and rooms
+- OWNER can only approve/reject bookings for their own kos
+- USER can only view their own booking history
+- Duplicate active bookings are prevented
+- Booking status starts as `PENDING`
+
+---
+
+# Project Goal
+
+This project demonstrates:
+
+- RESTful API development
+- Modular backend architecture
+- JWT authentication
+- Role-based authorization
+- DTO validation
+- Relational database management
+- Production-oriented backend structure
+- Booking approval workflow system
+
+---
+
+# Current Status
+
+Backend core system completed.
+
+Implemented:
+
+- Authentication System
+- Authorization System
+- Kos CRUD
+- Room CRUD
+- Booking System
+- Booking Approval Flow
+- Booking History
+- Railway Deployment
+- Neon PostgreSQL Integration
+
+---
+
+# Author
+
+Fakhridho Gunawan
