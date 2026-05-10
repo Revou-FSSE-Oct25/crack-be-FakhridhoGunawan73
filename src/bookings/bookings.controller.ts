@@ -29,4 +29,10 @@ export class BookingsController {
     updateBookingStatus(@Param('id', ParseIntPipe) id: number, @Req() req, @Body() dto: UpdateBookingStatusDto) {
         return this.bookingsService.updateBookingStatus(id, req.user, dto);
     }
+
+    @UseGuards(JwtGuard)
+    @Get('my-bookings')
+    getMyBookings(@Req() req) {
+        return this.bookingsService.getMyBookings(req.user.sub);
+    }
 }
