@@ -35,4 +35,10 @@ export class BookingsController {
     getMyBookings(@Req() req) {
         return this.bookingsService.getMyBookings(req.user.sub);
     }
+
+    @UseGuards(JwtGuard)
+    @Patch(':id/cancel')
+    cancelBooking(@Param('id', ParseIntPipe) id: number, @Req() req) {
+        return this.bookingsService.cancelBooking(id, req.user);
+    }
 }

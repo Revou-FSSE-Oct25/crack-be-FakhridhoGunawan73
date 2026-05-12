@@ -10,7 +10,7 @@ A RESTful backend API for a boarding house (kost) booking and management platfor
 
 The backend API has been deployed using Railway.
 
-Live API: https://your-railway-domain.up.railway.app
+Live API: https://crack-be-fakhridhogunawan73-production.up.railway.app
 
 ---
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UseGuards, } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, Req, UseGuards, } from '@nestjs/common';
 import { Role } from '@prisma/client';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
@@ -19,8 +19,8 @@ export class KosController {
   }
 
   @Get()
-  findAll() {
-    return this.kosService.findAll();
+  findAll(@Query() query: { name?: string; city?: string}) {
+    return this.kosService.findAll(query);
   }
 
   @Get(':id')

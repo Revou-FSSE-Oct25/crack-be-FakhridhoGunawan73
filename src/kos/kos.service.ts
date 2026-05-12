@@ -19,8 +19,24 @@ export class KosService {
         });
     }
 
-    findAll() {
+    findAll(query: { name?: string; city?: string}) {
+        const { name, city } = query;
+
         return this.prisma.kos.findMany({
+            where: {
+                ...(name && {
+                    name: {
+                        contains: name,
+                        mode: 'insensitive',
+                    },
+                }),
+                ...(city && {
+                    city: {
+                        contains: city,
+                        mode: 'insensitive',
+                    },
+                }),
+            },
             include: {
                 owner: {
                     select: {

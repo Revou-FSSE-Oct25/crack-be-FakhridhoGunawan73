@@ -33,8 +33,32 @@ export class RoomsService {
         });
     }
 
-    findAll() {
+    findAll(query: { minPrice?: string; maxPrice?: string; capacity?: string; isAvailable?: string; }) {
+        const { minPrice, maxPrice, capacity, isAvailable } = query;
+
+        const min = minPrice ? Number(minPrice) : undefined;
+        const max = maxPrice ? Number(maxPrice) : undefined;
+        const roomCapacity = capacity ? Number(capacity) : undefined;
+
         return this.prisma.room.findMany({
+            where: {
+                ...(!Number.isNaN(min) || !Number.isNaN(max)? {
+                    price: {
+                        ...(min !== undefined && !Number.isNaN(min) && { gte: min}),
+                        ...(max !== undefined && !Number.isNaN(max) && { lte: max}),
+                    },
+                }
+            : {}),
+                ...(roomCapacity !== undefined &&
+                    !Number.isNaN(roomCapacity) && {
+                    capacity: roomCapacity,
+                }),
+
+                ...(isAvailable === 'true' || isAvailable === 'false'? {
+                    isAvailable: isAvailable === 'true',
+                }
+            : {}),
+            },
             include: {
                 kos: true,
             },

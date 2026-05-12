@@ -189,4 +189,29 @@ export class BookingsService {
             },
         });
     }
+
+    async cancelBooking(id: number, user: any) {
+        const booking = await this.prisma.booking.findUnique({
+            where: { id },
+        });
+
+        if (!booking) {
+            throw new NotFoundException('Booking not found');
+        }
+
+        if (booking.userId !== user.sub) {
+            throw new BadRequestException('You can only cancel your own booking');
+        }
+
+        if (booking.status !== BookingStatus.PENDING && booking.status !== BookingStatus.APPROVED) {
+            throw new BadRequestException('Booking cannot be cancelled');
+        }
+
+        return this.prisma.booking.update({
+            where: { id },
+            data: {
+                status: 'CANCELLED',
+            },
+        });
+    }
 }
