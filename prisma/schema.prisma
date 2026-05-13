@@ -56,6 +56,7 @@ model Room {
   id          Int      @id @default(autoincrement())
   kosId       Int
   roomNumber  String
+  type        String   @default("Standard")
   price       Int
   capacity    Int      @default(1)
   facilities  String?

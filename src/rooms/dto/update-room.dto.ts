@@ -10,6 +10,10 @@ export class UpdateRoomDto {
     @IsOptional()
     price?: number;
 
+    @IsString()
+    @IsOptional()
+    type?: string;
+
     @IsInt()
     @Min(1)
     @IsOptional()

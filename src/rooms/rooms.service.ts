@@ -24,6 +24,7 @@ export class RoomsService {
             data: {
                 kosId: dto.kosId,
                 roomNumber: dto.roomNumber,
+                type: dto.type,
                 price: dto.price,
                 capacity: dto.capacity,
                 facilities: dto.facilities,
