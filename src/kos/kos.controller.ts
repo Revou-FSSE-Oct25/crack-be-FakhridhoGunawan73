@@ -23,6 +23,13 @@ export class KosController {
     return this.kosService.findAll(query);
   }
 
+  @Get('my-kos')
+  @UseGuards(JwtGuard,RolesGuard)
+  @Roles(Role.OWNER)
+  getMyKos(@Req() req: any) {
+    return this.kosService.getMyKos(req.user.id)
+  }
+  
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.kosService.findOne(Number(id));

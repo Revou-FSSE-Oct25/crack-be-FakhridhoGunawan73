@@ -23,6 +23,11 @@ export class RoomsController {
     return this.roomsService.findAll(query);
   }
 
+  @Get('kos/:kosId')
+  findByKos(@Param('kosId') kosId: string) {
+    return this.roomsService.findByKos(Number(kosId));
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.roomsService.findOne(Number(id));

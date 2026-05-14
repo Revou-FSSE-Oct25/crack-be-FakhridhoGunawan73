@@ -82,6 +82,31 @@ export class AuthService {
     return {
       message: 'Login success',
       accessToken: token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     };
   }
+
+  async getProfile(userId: number) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      createdAt: true,
+    },
+  });
+
+  if (!user) {
+    throw new UnauthorizedException("User not found");
+  }
+
+  return user;
+}
 }

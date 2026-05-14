@@ -9,7 +9,7 @@ import { Role } from '@prisma/client';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private authService: AuthService) {}
+    constructor(private readonly authService: AuthService) {}
 
     @Post('register')
     register(@Body() dto: RegisterDto){
@@ -24,10 +24,7 @@ export class AuthController {
     @Get('profile')
     @UseGuards(JwtGuard)
     profile(@Req() req: any) {
-        return {
-            message: 'Profile accesssed successfully',
-            user: req ['user'],
-        };
+        return this.authService.getProfile(req.user.sub);
     }
 
     @Get('owner-test')
