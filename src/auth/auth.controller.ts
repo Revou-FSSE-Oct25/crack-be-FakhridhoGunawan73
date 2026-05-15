@@ -48,18 +48,18 @@ export class AuthController {
   }
 
   @Post('logout')
-logout(@Res({ passthrough: true }) res: Response) {
-  res.clearCookie('token', {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    path: '/',
-  });
+  logout(@Res({ passthrough: true }) res: Response) {
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      path: '/',
+    });
 
-  return {
-    message: 'Logout successful',
-  };
-}
+    return {
+      message: 'Logout successful',
+    };
+  }
 
   @Get('profile')
   @UseGuards(JwtGuard)
